@@ -8,7 +8,7 @@ function NavBar({pokemonList, handleClick}){
     
     return <nav>
         {pokemonList.map((pokemon, index) => {
-           return <button onClick={() => handleClick(index)} key={pokemon.name}>{pokemon.name}</button>
+           return <button onClick={() => handleClick(index, pokemon)} key={pokemon.name}>{pokemon.name}</button>
         })}
     </nav>
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import PokemonCard from './components/PokemonCard'
@@ -34,11 +34,17 @@ const pokemonList = [
 function App() {
   const [ pokemonIndex , setIndex ] = useState(0);
 
-  function handleClick(index)
+  function handleClick(index, pokemon)
   {
     setIndex(index);
+    {pokemon.name === 'pikachu'  ? alert('pikachu') : ''};
   }
-  
+
+  useEffect(
+    () => {
+      alert('Hello Sacha');
+    }
+  )
   return (
     <div>
       <NavBar pokemonList={pokemonList} handleClick={handleClick}></NavBar>
