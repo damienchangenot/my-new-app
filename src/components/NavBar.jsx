@@ -1,16 +1,15 @@
 import PropTypes from "prop-types";
 
-function NavBar({pokemonIndex, pokemonList, handleNext, handlePrevious}){
+function NavBar({pokemonList, handleClick}){
     NavBar.propTypes = {
-        pokemonIndex: PropTypes.number.isRequired,
         pokemonList: PropTypes.array.isRequired,
-        handleNext: PropTypes.func.isRequired,
-        handlePrevious: PropTypes.func.isRequired,
+        handleClick: PropTypes.func.isRequired
     }
-
+    
     return <nav>
-        { pokemonIndex ? <button  onClick={handlePrevious}>Précèdent</button> : ''}
-        { pokemonIndex < pokemonList.length - 1 ? <button  onClick={handleNext}>Suivant</button> : ''}
+        {pokemonList.map((pokemon, index) => {
+           return <button onClick={() => handleClick(index)} key={pokemon.name}>{pokemon.name}</button>
+        })}
     </nav>
 }
 
