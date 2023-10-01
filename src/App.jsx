@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import PokemonCard from './components/PokemonCard'
+import NavBar from './components/NavBar'
 import './App.css'
 
 const pokemonList = [
@@ -37,14 +38,13 @@ function App() {
     setIndex( pokemonIndex - 1)
   }
   function handleNext(){
-    setIndex( pokemonIndex + 1)
+      setIndex( pokemonIndex + 1)
   }
-
+  
   return (
     <div>
-        <PokemonCard pokemon={pokemonList[pokemonIndex]}></PokemonCard>
-        { pokemonIndex ? <button  onClick={handlePrevious}>Précèdent</button> : ''}
-        { pokemonIndex < pokemonList.length - 1 ? <button  onClick={handleNext}>Suivant</button> : ''}
+      <NavBar pokemonIndex={pokemonIndex} pokemonList={pokemonList} handleNext={handleNext} handlePrevious={handlePrevious}></NavBar>
+      <PokemonCard pokemon={pokemonList[pokemonIndex]}></PokemonCard>
     </div>
   );
 }
