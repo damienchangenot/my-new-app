@@ -37,13 +37,14 @@ function App() {
   function handleClick(index, pokemon)
   {
     setIndex(index);
-    {pokemon.name === 'pikachu'  ? alert('pikachu') : ''};
+    {pokemon.name === 'pikachu'  ? alert('pikachu') : ''}
+    ;
   }
 
   useEffect(
     () => {
       alert('Hello Sacha');
-    }
+    }, []
   )
   return (
     <div>
