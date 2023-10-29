@@ -1,56 +1,46 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import PokemonCard from './components/PokemonCard'
-import NavBar from './components/NavBar'
+import PokemonList from './components/PokemonList';
+import GameList from './components/GameList';
+import Game from './components/Game';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css'
 
-const pokemonList = [
-  {
-      name: "bulbasaur",
-      imgSrc:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  },
-  {
-    name: "pikachu",
-    imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
-  },
-]
+
 
 function App() {
-  const [ pokemonIndex , setIndex ] = useState(0);
 
-  function handleClick(index, pokemon)
-  {
-    setIndex(index);
-    {pokemon.name === 'pikachu'  ? alert('pikachuu') : ''}
-    ;
-  }
 
-  useEffect(
-    () => {
-      alert('Hello Sacha');
-    }, []
-  )
   return (
-    <div>
-      <NavBar pokemonList={pokemonList} handleClick={handleClick}></NavBar>
-      <PokemonCard pokemon={pokemonList[pokemonIndex]}></PokemonCard>
-    </div>
+    <Router>
+      <div className="navbar bg-base-100">
+          <div className="flex-1">
+            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          </div>
+          <div className="flex-none">
+            <ul className="menu menu-horizontal px-1">
+              <li><a>Link</a></li>
+              <li>
+                <details>
+                  <summary>
+                    Parent
+                  </summary>
+                  <ul className="p-2 bg-base-100">
+                    <li><Link to="/liste">Liste Pokémon</Link></li>
+                    <li><Link to="/">Accueil</Link></li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </div>
+      </div>
+      
+      
+      <Routes>
+        <Route path="/" element={<PokemonList/>}></Route>
+        <Route path="/liste" element={<GameList/>}></Route>
+        <Route path="/game/:name" element={<Game />} />
+      </Routes>
+    </Router>
   );
 }
 
